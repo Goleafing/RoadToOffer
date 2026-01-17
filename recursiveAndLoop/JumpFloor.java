@@ -29,4 +29,18 @@ public class JumpFloor {
             return jumpFloor(target - 1) + jumpFloor(target - 2);
         }
     }
+
+    private static int jumpFloorOptimized(int target){
+        if(target <= 0) return -1;
+        if(target == 1) return 1;
+        if(target == 2) return 2;
+        
+        int a = 1, b = 2, result = 0;
+        for(int i = 3; i <= target; i++){
+            result = a + b;
+            a = b;
+            b = result;
+        }
+        return result;
+    }
 }
