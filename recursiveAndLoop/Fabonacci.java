@@ -17,20 +17,27 @@ public class Fabonacci {
         System.out.println(caculateFaboByRecursive(n));
     }
 
-    private static int caculateFaboByRecursive(int n){
+    private static long calculateFibo(int n){
         if(n < 0){
             return -1;
         }
-        if(n > 39){
+        if(n > 92){
             return -1;
         }
-        if(n == 0){
-            return 0;
-        }else if(n == 1){
-            return 1;
-        }else{
-            return caculateFaboByRecursive(n - 1) + caculateFaboByRecursive(n - 2);
+        if(n <= 1){
+            return n;
         }
+        return calculateFiboLoop(n);
+    }
+
+    private static long calculateFiboLoop(int n){
+        long a = 0, b = 1;
+        for(int i = 2; i <= n; i++){
+            long sum = a + b;
+            a = b;
+            b = sum;
+        }
+        return b;
     }
 
 }
